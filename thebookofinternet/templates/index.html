@@ -12,26 +12,26 @@
             </p>
         </div>
     </section>
-    <section class="section">
+    <section class="container">
         <form action="/upload_post" method="post">
             <div class="field">
                 <label class="label">Title</label>
                 <div class="control">
-                    <input class="input" type="text" id="username" required="required">
+                    <input class="input" type="text" id="title" name="title" required="required" maxlength="50">
                 </div>
             </div>
 
             <div class="field">
                 <label class="label">Name</label>
                 <div class="control">
-                    <input class="input" type="text" id="username" placeholder="optional">
+                    <input class="input" type="text" id="username" name="username" placeholder="optional" maxlength="50">
                 </div>
             </div>
 
             <div class="field">
                 <label class="label">Post</label>
                 <div class="control">
-                    <textarea class="textarea" type="text" id="username" required="required"></textarea>
+                    <textarea class="textarea" type="text" id="post" name="post" required="required" maxlength="500"></textarea>
                 </div>
             </div>
 
