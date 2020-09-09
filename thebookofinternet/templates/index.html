@@ -44,6 +44,8 @@
         <div id="obs"></div>
     </section>
     <script type="text/javascript">
+        var base_url = "http://localhost:5000/"
+
         var scroller = document.querySelector('#posts')
         var sentinel = document.querySelector('#obs')
 
@@ -55,7 +57,7 @@
 
         function load_posts() {
             if (more_exists && retrieved_counter == 0) {
-                fetch("http://localhost:5000/get_post_count")
+                fetch(base_url+"get_post_count")
                 .then(function(response) {
                     return response.json()
                 }).then(function(data) {
@@ -63,7 +65,7 @@
                         retrieved_from = data["count"]
                     }
                     var url_params = "down_to="+(retrieved_from-retrieved_counter).toString()
-                    return fetch("http://localhost:5000/get_posts?"+url_params)
+                    return fetch(base_url+"get_posts?"+url_params)
                 }).then(function(response) {
                     return response.json()
                 }).then(function(data) {
@@ -90,7 +92,7 @@
                     }
                 })
             } else if (more_exists) {
-                fetch("http://localhost:5000/get_posts?down_to="+(retrieved_from-retrieved_counter).toString())
+                fetch(base_url+"get_posts?down_to="+(retrieved_from-retrieved_counter).toString())
                 .then(function(response) {
                     return response.json()
                 }).then(function(data) {
