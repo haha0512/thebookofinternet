@@ -18,13 +18,14 @@ def get_posts():
     down_to = int(request.args['down_to'])
     posts = []
     for i in range(10):
-        posts.append(Post.query.get(down_to-i).to_dict())
+        if down_to - i >= 1:
+            posts.append(Post.query.get(down_to-i).to_dict())
 
     return jsonify({'posts': posts})
 
 
 @app.route('/upload_post', methods=['POST'])
-@limiter.limit('1/minute')
+@limiter.limit('1/second')
 def upload_post():
     title = request.form['title']
     username = request.form['username']
